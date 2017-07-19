@@ -1,0 +1,35 @@
+    def update(self):
+        self.x += self.xd * self.speed
+        self.y += self.yd * self.speed
+        if self.y <= 0:
+            self.yd = self.yd * -1
+        elif self.y >= WINDOWHEIGHT:
+            self.yd = self.yd * -1
+                
+        if PLAYER1.rect.collidepoint(self.circle.center):
+            self.xd = self.xd * -1
+            self.sound1.play()
+            self.increase_speed()
+            if self.xd == -1:
+                self.x += self.buffer * -1
+            else:
+                self.x += self.buffer
+            self.counter +=1
+            if self.counter >= 2:
+                self.counter = 0
+                self.buffer += 5
+            
+
+        elif PLAYER2.rect.collidepoint(self.circle.center):
+            self.xd = self.xd * -1
+            self.sound2.play()
+            self.increase_speed()
+            if self.xd == -1:
+                self.x += self.buffer * -1
+            else:
+                self.x += self.buffer
+            self.counter +=1
+            if self.counter >= 2:
+                self.counter = 0
+                self.buffer += 5
+            
